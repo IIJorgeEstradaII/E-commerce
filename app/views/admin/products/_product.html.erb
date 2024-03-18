@@ -23,6 +23,9 @@
     <strong class="block font-medium mb-1">Active:</strong>
     <%= product.active %>
   </p>
+  <div>
+    <%= product.images%>
+  </div>
 
   <% if action_name != "show" %>
     <%= link_to "Show this product", product, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

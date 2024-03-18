@@ -3,7 +3,7 @@ class Admin::ProductsController < AdminController
 
   # GET /admin/products or /admin/products.json
   def index
-    @admin_products = Admin::Product.all
+    @admin_products = Admin::Product.all.order(created_at: :desc)
   end
 
   # GET /admin/products/1 or /admin/products/1.json
@@ -65,6 +65,6 @@ class Admin::ProductsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def admin_product_params
-      params.require(:admin_product).permit(:name, :description, :price, :category_id, :active)
+      params.require(:admin_product).permit(:name, :description, :price, :category_id, :active, images: [])
     end
 end

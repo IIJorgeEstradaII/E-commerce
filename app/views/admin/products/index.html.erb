@@ -8,7 +8,53 @@
     <%= link_to "New product", new_admin_product_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="admin_products" class="min-w-full">
-    <%= render @admin_products %>
+ <%# <div id="admin_products" class="min-w-full"> %> 
+    <%#  <%= render @admin_products %>
+  <%# </div> %>
+
+ <div class="flex flex-col w-full">
+    <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+      <div class="py-2 inline-block min-w-full">
+        <div class="overflow-x-auto">
+          <table class="min-w-full overflow-x-scroll">
+            <thead class="bg-white border-b">
+              <tr>
+              <th scope="col" class="text-sn font-medium text-gray-800 px-6 py-4 text-left">
+                </th>
+                <th scope="col" class="text-sn font-medium text-gray-800 px-6 py-4 text-left">
+                  Name
+                </th>
+                <th scope="col" class="text-sn font-medium text-gray-800 px-6 py-4 text-left">
+                  Description
+                </th>
+                <th scope="col" class="text-sn font-medium text-gray-800 px-6 py-4 text-left">
+                  ID
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @admin_products.each do |c|%>
+              <tr class="bg-gray-50 border-b"> 
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 underline">
+                  <%= c.images.any? ? image_tag(c.images.third, style: "width: 50px; height: 50px;") : image_tag("http://via.placeholder.com/50", style: "width: 50px; height: 50px;") %>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 underline">
+                  <%=link_to c.name, edit_admin_category_path(c) %>
+                </td>
+                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 underline">
+                  <%= c.description%>
+                </td>
+                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 underline">
+                  <%= c.id%>
+                </td>
+              </tr>
+              <% end%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
+ 
+
 </div>
